@@ -1,5 +1,6 @@
 package com.extraordinaria.pideya.service.impl;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,9 @@ public class DeliveryRouteServiceImpl {
     }
 
     public DeliveryRoute createRoute(DeliveryRouteDTO deliveryRouteDTO) {
+    	if (!isValidDestination(deliveryRouteDTO.getEndLocation())) {
+            throw new IllegalArgumentException("Destino no permitido: " + deliveryRouteDTO.getEndLocation());
+        }
         DeliveryRoute deliveryRoute = new DeliveryRoute(null, null, null, null, null, null);
         deliveryRoute.setDriverName(deliveryRouteDTO.getDriverName());
         deliveryRoute.setVehicleNumber(deliveryRouteDTO.getVehicleNumber());
@@ -37,12 +41,19 @@ public class DeliveryRouteServiceImpl {
         deliveryRoute.setStartLocation(deliveryRouteDTO.getStartLocation());
         deliveryRoute.setEndLocation(deliveryRouteDTO.getEndLocation());
         return deliveryRouteRepository.save(deliveryRoute);
+        
     }
 
-    public void deleteRoute(Long id) {
+    private boolean isValidDestination(String endLocation) {
+        List<String> allowedDestinations = Arrays.asList("Valdemoro", "Pinto", "Getafe", "Leganez");
+        return allowedDestinations.contains(isValidDestination(null));
+	}
+
+	public void deleteRoute(Long id) {
         if (!deliveryRouteRepository.existsById(id)) {
             throw new ResourceNotFoundException("Route not found with id " + id);
         }
         deliveryRouteRepository.deleteById(id);
     }
+ 
 }

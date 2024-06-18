@@ -7,4 +7,6 @@ import com.extraordinaria.pideya.model.DeliveryRoute;
 
 @Repository
 public interface DeliveryRouteRepository extends JpaRepository<DeliveryRoute, Long> {
+	
+	
 }

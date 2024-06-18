@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: pideya
+  datasource:
+    url: jdbc:postgresql://localhost:5125/pideya
+    username: user
+    password: p@ssword1
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    generate-ddl: true
