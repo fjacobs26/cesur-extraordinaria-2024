@@ -30,7 +30,7 @@ public class DeliveryRouteServiceImpl {
     }
 
     public DeliveryRoute createRoute(DeliveryRouteDTO deliveryRouteDTO) {
-        DeliveryRoute deliveryRoute = new DeliveryRoute();
+        DeliveryRoute deliveryRoute = new DeliveryRoute(null, null, null, null, null, null);
         deliveryRoute.setDriverName(deliveryRouteDTO.getDriverName());
         deliveryRoute.setVehicleNumber(deliveryRouteDTO.getVehicleNumber());
         deliveryRoute.setDeliveryDate(deliveryRouteDTO.getDeliveryDate());
