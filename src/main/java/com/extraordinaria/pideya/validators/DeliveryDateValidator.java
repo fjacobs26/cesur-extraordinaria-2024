@@ -1,9 +1,14 @@
 package com.extraordinaria.pideya.validators;
 
+
+
 import com.extraordinaria.pideya.dto.DeliveryRouteDTO;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+import java.util.Date;  // Importación correcta de java.util.Date
+
+
 
 public class DeliveryDateValidator implements ConstraintValidator<ValidDeliveryDate, DeliveryRouteDTO>{
     @Override
@@ -19,3 +24,6 @@ public class DeliveryDateValidator implements ConstraintValidator<ValidDeliveryD
         return !deliveryRouteDTO.getDeliveryDate().before(new Date());
     }
 }
+
+
+
